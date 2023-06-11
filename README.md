@@ -1,0 +1,1 @@
+Project uses Express.js, Cloudinary, Nodemailer, MongoDB, and React.js to save image information to the MongoDB database and save the image file to the Cloudinary cloud site.
