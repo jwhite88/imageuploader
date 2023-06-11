@@ -34,8 +34,9 @@ router.post('/images', upload.single("myimage"), async (req, res) => {
             .then((response) => {
                 console.log("message came back: ", response)
             })
-        // res.json(images);
-
+            .catch((err) => {
+                console.log("error sending email: ", err)
+            }) ;
 
         // Remove the file from temporary storage
         const temporaryFilePath = req.file.path;
@@ -47,11 +48,7 @@ router.post('/images', upload.single("myimage"), async (req, res) => {
             }
         });
 
-
-        // res.json(savedImage);
-
-        res.json({ testing: "Still testing" })
-
+        res.json(savedImage);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -61,18 +58,7 @@ router.post('/images', upload.single("myimage"), async (req, res) => {
 router.get('/images', async (req, res) => {
     try {
         const images = await Image.find();
-
-        // let emailResponse = sendmail("jwhite777@proton.me", "jwhite789@protonmail.com", "Another Test", "This is my second message using nodemailer", `
-        // <h1>Message using HTML</h1>
-        // <p>This a little note.</p>
-        // `);
-
-        // emailResponse
-        //     .then((response) => {
-        //         console.log("message came back: ", response)
-        //     })
-        // res.json(images);
-
+        res.status(200).json(images);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -95,10 +81,10 @@ router.get('/images/:id', async (req, res) => {
 // Update an image
 router.put('/images/:id', async (req, res) => {
     try {
-        const { name, description, url, signature } = req.body;
+        const { name, description } = req.body;
         const updatedImage = await Image.findByIdAndUpdate(
             req.params.id,
-            { name, description, url, signature },
+            { name, description },
             { new: true }
         );
         if (!updatedImage) {
