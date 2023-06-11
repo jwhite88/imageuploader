@@ -6,8 +6,8 @@ const transporter = nodemailer.createTransport({
     port: 1025,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: process.env.PROTON_USER, // generated ethereal user
-      pass: process.env.PROTON_PASSWORD, // generated ethereal password
+      user: process.env.PROTON_USER,
+      pass: process.env.PROTON_PASSWORD,
     },
     tls: {
         rejectUnauthorized: false
@@ -27,6 +27,5 @@ const transporter = nodemailer.createTransport({
   }
 
   module.exports = {
-    transporter,
     sendmail
   };

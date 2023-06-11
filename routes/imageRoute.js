@@ -4,7 +4,7 @@ const fs = require("fs")
 const Image = require('../models/Image');
 const cloudinary = require("../config/cloudinaryConfig")
 const upload = require("../utils/multerFig")
-const { transporter, sendmail } = require("../utils/mailer")
+const { sendmail } = require("../utils/mailer")
 
 // Create a new image
 router.post('/images', upload.single("myimage"), async (req, res) => {
