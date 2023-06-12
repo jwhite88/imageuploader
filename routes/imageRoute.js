@@ -25,7 +25,7 @@ router.post('/images', upload.single("myimage"), async (req, res) => {
 
         // Send email
 
-        let emailResponse = sendmail("jwhite777@proton.me", "jwhite789@protonmail.com", "Another Test", "This is my second message using nodemailer", `
+        let emailResponse = sendmail("johnwhite4837@gmail.com", "jwhite789@protonmail.com", "Another Test", "This is my second message using nodemailer", `
         <h3>Image Name: ${originalname}</h3>
         <p>${description}</p>
         `);
